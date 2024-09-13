@@ -44,7 +44,7 @@ void openFile(ifstream& hydroCarbonStream);
 void displayHydroCarbonVector(const vector<Hydrocarbon>& hydroCarbonVector);
 size_t checkNameInVector(vector<Hydrocarbon>& hydroCarbonVector, const string& name, const int& carbonAtoms, const int& hydrogenAtoms);
 void fillHydroCarbonVector(vector<Hydrocarbon>& hydroCarbonVector, ifstream& hydroCarbonStream);
-void swapHydroCarbons(vector<Hydrocarbon>& hydroCarbonVector, int indexOne, int indexTwo);
+void swapHydroCarbons(vector<Hydrocarbon>& hydroCarbonVector, size_t indexOne, size_t indexTwo);
 void sortHydroCarbonVector(vector<Hydrocarbon>& hydroCarbonVector);
 
 int main() {
@@ -112,7 +112,7 @@ void fillHydroCarbonVector(vector<Hydrocarbon>& hydroCarbonVector, ifstream& hyd
 }
 
 // function to swap the positions of hydrocarbons in the hydroCarbonVector, this will make our insertion sort easier to write
-void swapHydroCarbons(vector<Hydrocarbon>& hydroCarbonVector, int indexOne, int indexTwo){
+void swapHydroCarbons(vector<Hydrocarbon>& hydroCarbonVector, size_t indexOne, size_t indexTwo){
     Hydrocarbon tempHydroCarbonHolder = hydroCarbonVector[indexOne];
     hydroCarbonVector[indexOne] = hydroCarbonVector[indexTwo];
     hydroCarbonVector[indexTwo] = tempHydroCarbonHolder;
@@ -139,3 +139,4 @@ void sortHydroCarbonVector(vector<Hydrocarbon>& hydroCarbonVector){
         }
     }
 }
+
