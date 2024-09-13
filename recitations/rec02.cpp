@@ -58,6 +58,7 @@ int main() {
     hydroCarbonStream.close();
     
     // displaying the unsorted hydroCarbonVector, sorting the hydroCarbonVector and then displaying it
+    cout << endl;
     cout << "Unsorted: " << endl;
     displayHydroCarbonVector(hydroCarbonVector);
     cout << endl;
