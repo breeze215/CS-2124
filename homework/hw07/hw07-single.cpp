@@ -61,18 +61,19 @@ public:
    // set all warrior strength's to 0 and set alive to false
     void die();
    
-   // function to hire a warrior
+   //method to hire a warrior
     bool hire(Warrior& someWarrior);
    
-   // function to fire a warrior
+   //method to fire a warrior
     bool fire(Warrior& someWarrior);
    
-    //functions to clean up the code in battle
+    //methods to clean up the code in battle
     void updateStrength(Noble& winner, Noble& loser);
     void updateWinner(Noble& winner, Noble& loser, double win, double lose);
     
     void battle(Noble& enemy);
     
+    //method to use in other methods
     bool removeWarrior(Warrior& someWarrior);
    
 private:
@@ -249,7 +250,7 @@ bool Noble::fire(Warrior& someWarrior){
    return status;
 }
 
-//function called in battle method to simplify it
+//method called in battle method to simplify it
 void Noble::updateStrength(Noble& winner, Noble& loser){
     double win = winner.totalArmyStrength();
     double lose = loser.totalArmyStrength();
@@ -263,7 +264,7 @@ void Noble::updateStrength(Noble& winner, Noble& loser){
     updateWinner(winner, loser, win, lose);
 }
 
-// function that is called in updateStrength to simplify it
+//method that is called in updateStrength to simplify it
 void Noble::updateWinner(Noble& winner, Noble& loser, double win, double lose){
     if(win > lose){
         loser.die();
@@ -311,32 +312,4 @@ bool Noble::removeWarrior(Warrior& someWarrior){
         nobleArmy.pop_back();
     }
     return found;
-}
-
-//function to display the status in the output
-void displayStatus(vector<Warrior*>& warriors, vector<Noble*>& nobles){
-    cout << "Status" << endl << "=====" << endl << "Nobles:" << endl;
-    int hiredWarriors = 0;
-    if(nobles.size() > 0){
-        for(const Noble* const currNoble : nobles){
-            cout << *currNoble;
-            hiredWarriors += currNoble -> getNobleArmySize();
-        }
-    }
-    else{ //if there are no pointers in the nobles vector
-        cout << "NONE" << endl;
-    }
-    cout << endl;
-    cout << "Unemployed warriors:" << endl;
-    // checking whether the nobleArmy vector has any pointers and if it does, checking whether all the warriors are hire
-    if(warriors.size() - hiredWarriors > 0){
-        for(const Warrior* const currWarrior : warriors){
-            if(!currWarrior -> isHired()){
-                cout << *currWarrior << endl;
-            }
-        }
-    }
-    else{
-        cout << "NONE" << endl;
-    }
 }
